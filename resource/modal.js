@@ -92,6 +92,18 @@ function addModalEvent() {
         addAttackList(style, chara_no);
         addBuffList(style, chara_no);
         addAbility(style, chara_no);
+
+        limit_count = limit_status?limit_status:0;
+        let chara_id = "chara_id-" + select_style_list[chara_no].chara_id;
+        $("input[type=checkbox]." + chara_id).each(function(index, value) {
+            let ability_id = $(value).data("ability_id");
+            let ability_info = getAbilityInfo(ability_id);
+            let limit_border = Number($(value).data("limit_border"));
+            if (select_attack_skill !== undefined) {
+                let attack_chara_id = "chara_id-" + select_attack_skill.chara_id;
+                setAbilityCheck(value, ability_info, limit_border, limit_count, attack_chara_id);
+            }
+        });
         $("#attack_list").trigger("change");
         for(let idx in select_style_list) {
             lastSelect.push(select_style_list[idx].style_id)

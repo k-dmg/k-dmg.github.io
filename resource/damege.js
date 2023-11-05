@@ -78,7 +78,7 @@ function setEventTrigger() {
             $("#" + status_kbn[skill_info["ref_status_" + i]] + "_" + chara_no).addClass("status_attack_skill");
         }
         let limit_count = Number($("#limit_" + chara_no).val());
-        $("input[type=checkbox].ability").each(function(index, value) {
+        $("input[type=checkbox].ability."+chara_id).each(function(index, value) {
             let ability_id = $(value).data("ability_id");
             let chara_no = $(value).data("chara_no");
             let ability_info = getAbilityInfo(ability_id);
