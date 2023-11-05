@@ -61,7 +61,7 @@ function addModalEvent() {
         let style_id = $(this).data("style_id");
 
         let style = style_list.find((obj) => obj.style_id === style_id);
-
+        let lastSelect = [];
         // 同一のキャラIDは不許可
         for(let idx in select_style_list) {
             if (select_style_list[idx].chara_id === style.chara_id && chara_no != idx) {
@@ -84,7 +84,7 @@ function addModalEvent() {
             if (status) $("#" + status_kbn[j] + "_" + chara_no).val(status);
         }
         const jewel_status = localStorage.getItem("jewel_" + style.chara_id);
-        if (jewel_status) $("#jewel_" + chara_no).prop("selectedIndex", jewel_status);
+        if (jewel_status) $("#jewel_lv_" + chara_no).prop("selectedIndex", jewel_status);
         const limit_status = localStorage.getItem("limit_" + style.chara_id);
         if (limit_status) $("#limit_" + chara_no).prop("selectedIndex", limit_status);
 
@@ -93,7 +93,10 @@ function addModalEvent() {
         addBuffList(style, chara_no);
         addAbility(style, chara_no);
         $("#attack_list").trigger("change");
-
+        for(let idx in select_style_list) {
+            lastSelect.push(select_style_list[idx].style_id)
+        }
+        localStorage.setItem("lastSelect", lastSelect.join(","));
         closeModel();
     });
 

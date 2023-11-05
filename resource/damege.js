@@ -8,6 +8,23 @@ function setEventTrigger() {
             }
         }
     });
+    $("#style_load_btn").on("click", function(event) {
+            const charas = localStorage.getItem("lastSelect").split(",");
+            for(let idx in charas) {
+                chara_no = idx;
+                let this_id = parseInt(charas[idx], 10);
+                if(this_id > 0) {
+                    $('.select_style').filter(function() {
+                        const id = $(this).data('style_id');
+                        return id == this_id;
+                      }).trigger("click");
+            
+                }
+            }
+    
+        
+    });
+    
     // 敵リストイベント
     $("#enemy_class").on("change", function(event) {
         let enemy_class = $("#enemy_class option:selected").val();
@@ -229,7 +246,7 @@ function setEventTrigger() {
             let status = status_kbn[j];
             localStorage.setItem(status + "_" + select_style_list[i].chara_id, $("#" + status + "_" + i).val())
           }
-          localStorage.setItem("jewel_" + select_style_list[i].chara_id, $("#jewel_" + i).prop("selectedIndex"));
+          localStorage.setItem("jewel_" + select_style_list[i].chara_id, $("#jewel_lv_" + i).prop("selectedIndex"));
           localStorage.setItem("limit_" + select_style_list[i].chara_id, $("#limit_" + i).prop("selectedIndex"));
         }
       }
