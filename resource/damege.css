@@ -74,7 +74,7 @@ div.lv {
 }
 div.lv::before {
     content: "Lv";
-    margin-right: -4px;
+    margin-right: 0px;
 }
 div.lv select{
     text-align: center;

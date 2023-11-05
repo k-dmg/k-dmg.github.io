@@ -77,8 +77,8 @@ function setEventTrigger() {
 
         let attack_physical = type_physical[skill_info.attack_physical];
         let attack_element = type_element[skill_info.attack_element];
-        $("#attack_physical").attr("src", "resource/" + attack_physical + ".webp");
-        $("#attack_element").attr("src", "resource/" + attack_element + ".webp");
+        $("#attack_physical").attr("src", "resource/" + attack_physical + ".png");
+        $("#attack_element").attr("src", "resource/" + attack_element + ".png");
         $("." + attack_physical).addClass("selected");
         $("." + attack_element).addClass("selected");
 

@@ -157,4 +157,5 @@ var skill_buff = [
     {"buff_id":2701,"buff_kind":17,"buff_element":0,"chara_id":17,"style_id":0,"buff_name":"마음 활성","ref_status_1":5,"ref_status_2":0,"min_power":2.00,"max_power":3.00,"sp_cost":5,"param_limit":129,"max_lv":1,"skill_attack":0,"only_me":1,"only_first":0},
     {"buff_id":2702,"buff_kind":17,"buff_element":0,"chara_id":39,"style_id":0,"buff_name":"홀드 업 마인드","ref_status_1":0,"ref_status_2":0,"min_power":2.00,"max_power":2.00,"sp_cost":8,"param_limit":0,"max_lv":1,"skill_attack":0,"only_me":1,"only_first":0},
     {"buff_id":2703,"buff_kind":17,"buff_element":0,"chara_id":46,"style_id":0,"buff_name":"브릴리언트 글로리","ref_status_1":5,"ref_status_2":0,"min_power":2.00,"max_power":3.00,"sp_cost":7,"param_limit":208,"max_lv":1,"skill_attack":0,"only_me":1,"only_first":0},
+    {"buff_id":10001,"buff_kind":3,"buff_element":0,"chara_id":0,"style_id":0,"buff_name":"소퍼닝","ref_status_1":5,"ref_status_2":6,"min_power":30.00,"max_power":45.00,"sp_cost":9,"param_limit":200,"max_lv":1,"skill_attack":0,"only_me":0,"only_first":0},
     ]

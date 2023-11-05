@@ -59,7 +59,6 @@ function addModalEvent() {
     // スタイルを選択
     $('.select_style').on('click', function(){
         let style_id = $(this).data("style_id");
-        console.log(style_id);
 
         let style = style_list.find((obj) => obj.style_id === style_id);
 
