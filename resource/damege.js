@@ -33,7 +33,7 @@ function setEventTrigger() {
             $(".status_attack_skill").removeClass("status_attack_skill");
         }
         if ($("#attack_list option").length == 0) {
-            $("#attack_physical, #attack_element").attr("src", "img/blank.png");
+            $("#attack_physical, #attack_element").attr("src", "resource/blank.png");
             // 選択無しの場合は、削除のみ
             return;
         }
@@ -77,8 +77,8 @@ function setEventTrigger() {
 
         let attack_physical = type_physical[skill_info.attack_physical];
         let attack_element = type_element[skill_info.attack_element];
-        $("#attack_physical").attr("src", "img/" + attack_physical + ".webp");
-        $("#attack_element").attr("src", "img/" + attack_element + ".webp");
+        $("#attack_physical").attr("src", "resource/" + attack_physical + ".webp");
+        $("#attack_element").attr("src", "resource/" + attack_element + ".webp");
         $("." + attack_physical).addClass("selected");
         $("." + attack_element).addClass("selected");
 

@@ -1,7 +1,8 @@
 // スタイルリスト作成
 function createStyleList() {
     $.each(style_list, function(index, value) {
-    	let source = "icon/" + value.image_url;
+        let temp = value.image_url.split(".");
+    	let source = "https://static.inven.co.kr/image_2011/site_image/hbr/style/" + temp[0] + "_Thumbnail.webp?v=/";
     	let input = $('<input>')
             .attr("type", "image")
             .attr("src", source)
@@ -58,6 +59,8 @@ function addModalEvent() {
     // スタイルを選択
     $('.select_style').on('click', function(){
         let style_id = $(this).data("style_id");
+        console.log(style_id);
+
         let style = style_list.find((obj) => obj.style_id === style_id);
 
         // 同一のキャラIDは不許可
@@ -127,7 +130,7 @@ function removeMember() {
     $(chara_id_class).remove();
     select_style_list[chara_no] = 0;
     // 画像初期化
-    $('[data-chara_no="' + chara_no + '"]').attr("src", "img/plus.png");
+    $('[data-chara_no="' + chara_no + '"]').attr("src", "resource/plus.png");
     // スキル情報編集
     $("#attack_list").trigger("change");
 }
