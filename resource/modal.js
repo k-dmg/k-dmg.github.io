@@ -2,7 +2,7 @@
 function createStyleList() {
     $.each(style_list, function(index, value) {
         let temp = value.image_url.split(".");
-    	let source = "https://static.inven.co.kr/image_2011/site_image/hbr/style/" + temp[0] + "_Thumbnail.webp?v=/";
+    	let source = "https://hbr.quest/hbr/" + temp[0] + "_Thumbnail.webp?v=/";
     	let input = $('<input>')
             .attr("type", "image")
             .attr("src", source)
