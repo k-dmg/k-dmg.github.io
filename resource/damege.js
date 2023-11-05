@@ -276,7 +276,7 @@ function calcDamage() {
     calculateDamage(critical_power * 1.1, skill_info, buff, debuff, fixed * critical_buff, "#critical_damage_max", undefined);
 	
     // クリティカル表示
-    $("#critical_rate").text(`(発生率: ${Math.round(critical_rate * 100) / 100}%)`);
+    $("#critical_rate").text(`(발생률: ${Math.round(critical_rate * 100) / 100}%)`);
     $("#damage_result").show();
 }
 
@@ -392,7 +392,7 @@ function getSpCost() {
 
 // スキル使用回数取得
 function addSkillCount(sp_list, name, id, sp_cost) {
-    name = name.replace("(初回)", "")
+    name = name.replace("(처음)", "")
     const array = sp_list.filter((obj) => obj.name === name);
 
     let single = {};

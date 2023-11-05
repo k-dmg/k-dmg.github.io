@@ -66,7 +66,7 @@ function addModalEvent() {
         // 同一のキャラIDは不許可
         for(let idx in select_style_list) {
             if (select_style_list[idx].chara_id === style.chara_id && chara_no != idx) {
-                alert("同一キャラクターは複数選択できません");
+                alert("같은 캐릭터를 여러명 넣을 수 없습니다.");
                 return false;
             }
         }
@@ -75,7 +75,7 @@ function addModalEvent() {
         
         // 画像切り替え
         select_style_list[chara_no] = style;
-        $('[data-chara_no="' + chara_no + '"]').attr("src", "icon/" + style.image_url);
+        $('[data-chara_no="' + chara_no + '"]').attr("src", $(this).attr("src"));
 
         // 宝珠スキルタイプを設定
         $("#jewel_type_" + chara_no).val(style.jewel_type);
