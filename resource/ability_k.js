@@ -31,7 +31,7 @@ let ability_list = [
     {"ability_id":404,"ability_name":"빛의 파동","ability_explan":"아군 전체의 빛속성 스킬공격력을 항상+10%","ability_short_explan":"빛속성 스킬공격력을 항상+10%","ability_target":3,"ability_kind":1,"ability_element":4,"ability_type":1,"ability_power":10},
     {"ability_id":405,"ability_name":"어둠의 파동","ability_explan":"아군 전체의 어둠속성 스킬공격력을 항상+10%","ability_short_explan":"어둠속성 스킬공격력을 항상+10%","ability_target":3,"ability_kind":1,"ability_element":5,"ability_type":1,"ability_power":10},
     {"ability_id":501,"ability_name":"재치","ability_explan":"자신이 발동한 스킬공격력 증가의 효과+25%","ability_short_explan":"자신이 발동한 스킬공격력 증가의 효과+25%","ability_target":4,"ability_kind":8,"ability_element":0,"ability_type":1,"ability_power":25},
-    {"ability_id":502,"ability_name":"침식","ability_explan":"자신이 발동한 방어력 감소의 효과+25%","ability_short_explan":"자신이 발동한 방어력ダ 감소 효과+25%","ability_target":4,"ability_kind":9,"ability_element":0,"ability_type":1,"ability_power":25},
+    {"ability_id":502,"ability_name":"침식","ability_explan":"자신이 발동한 방어력 감소의 효과+25%","ability_short_explan":"자신이 발동한 방어력 감소 효과+25%","ability_target":4,"ability_kind":9,"ability_element":0,"ability_type":1,"ability_power":25},
     {"ability_id":1001,"ability_name":"위협의 비명","ability_explan":"배틀 시작시 전방에 있으면 높은 확률로 적 스턴","ability_short_explan":"","ability_target":0,"ability_kind":0,"ability_element":0,"ability_type":0,"ability_power":0},
     {"ability_id":1002,"ability_name":"세련","ability_explan":"배틀 시작시 전방에 있으면 자신의 토큰+5","ability_short_explan":"","ability_target":0,"ability_kind":0,"ability_element":0,"ability_type":0,"ability_power":0},
     {"ability_id":1003,"ability_name":"재앙","ability_explan":"배틀 시작시 전방에 있으면 적 저주 상태(2턴)","ability_short_explan":"","ability_target":0,"ability_kind":0,"ability_element":0,"ability_type":0,"ability_power":0},
@@ -47,4 +47,5 @@ let ability_list = [
     {"ability_id":1501,"ability_name":"혜풍","ability_explan":"자신이 발동한 회복스킬의 효과+20%","ability_short_explan":"","ability_target":0,"ability_kind":0,"ability_element":0,"ability_type":0,"ability_power":0},
     {"ability_id":1502,"ability_name":"감내","ability_explan":"적행동 시작시 전방 & DP파괴 상태일때 자신의 방어력+50%","ability_short_explan":"","ability_target":0,"ability_kind":0,"ability_element":0,"ability_type":0,"ability_power":0},
     {"ability_id":1503,"ability_name":"전공","ability_explan":"대미지를 입힐때 적 하나마다 토큰 1상승(추격 제외)","ability_short_explan":"","ability_target":0,"ability_kind":0,"ability_element":0,"ability_type":0,"ability_power":0},
+    {"ability_id":603,"ability_name":"번개의 제압","ability_explan":"행동 시작 시 전방 & DP 80% 이상일 때 적의 번개 속성 방어력 -18%","ability_short_explan":"적의 번개 속성 방어력-18%","ability_target":2,"ability_kind":7,"ability_element":3,"ability_type":1,"ability_power":10},
     ]

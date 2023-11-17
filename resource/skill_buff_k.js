@@ -19,6 +19,8 @@ var buff_kbn = [
     "funnel",
     "strong_break",
     "dp_defense_down",
+    "resist_remove",
+    "resist_down",
     ];
 
 var skill_buff = [
@@ -86,6 +88,10 @@ var skill_buff = [
     {"buff_id":62,"buff_kind":1,"buff_element":5,"chara_id":17,"style_id":91,"buff_name":"칸자키류 인술 산화","ref_status_1":5,"ref_status_2":0,"min_power":65.00,"max_power":80.00,"sp_cost":15,"param_limit":147,"max_lv":10,"skill_attack":89,"only_me":1,"only_first":0},
     {"buff_id":63,"buff_kind":8,"buff_element":3,"chara_id":38,"style_id":92,"buff_name":"예상우의의 춤 벽력","ref_status_1":5,"ref_status_2":0,"min_power":50.00,"max_power":80.00,"sp_cost":11,"param_limit":248,"max_lv":10,"skill_attack":0,"only_me":0,"only_first":0},
     {"buff_id":64,"buff_kind":9,"buff_element":3,"chara_id":38,"style_id":92,"buff_name":"예상우의의 춤 벽력","ref_status_1":0,"ref_status_2":0,"min_power":45.00,"max_power":45.00,"sp_cost":11,"param_limit":0,"max_lv":1,"skill_attack":0,"only_me":0,"only_first":0},
+    {"buff_id":65,"buff_kind":20,"buff_element":3,"chara_id":42,"style_id":96,"buff_name":"순결의 빠쩰루이","ref_status_1":0,"ref_status_2":0,"min_power":0.00,"max_power":0.00,"sp_cost":15,"param_limit":0,"max_lv":1,"skill_attack":95,"only_me":0,"only_first":0},
+    {"buff_id":66,"buff_kind":21,"buff_element":3,"chara_id":42,"style_id":96,"buff_name":"순결의 빠쩰루이","ref_status_1":5,"ref_status_2":6,"min_power":45.00,"max_power":60.00,"sp_cost":15,"param_limit":141,"max_lv":1,"skill_attack":95,"only_me":0,"only_first":0},
+    {"buff_id":67,"buff_kind":5,"buff_element":3,"chara_id":42,"style_id":96,"buff_name":"순결의 빠쩰루이","ref_status_1":6,"ref_status_2":5,"min_power":35.00,"max_power":50.00,"sp_cost":15,"param_limit":141,"max_lv":1,"skill_attack":95,"only_me":0,"only_first":0},
+    {"buff_id":68,"buff_kind":4,"buff_element":3,"chara_id":42,"style_id":96,"buff_name":"자비씨모스찌","ref_status_1":5,"ref_status_2":6,"min_power":30.00,"max_power":45.00,"sp_cost":5,"param_limit":120,"max_lv":1,"skill_attack":0,"only_me":0,"only_first":0},
     {"buff_id":1000,"buff_kind":0,"buff_element":0,"chara_id":0,"style_id":0,"buff_name":"어택 라이즈","ref_status_1":5,"ref_status_2":0,"min_power":50.00,"max_power":65.00,"sp_cost":4,"param_limit":450,"max_lv":1,"skill_attack":0,"only_me":1,"only_first":0},
     {"buff_id":1001,"buff_kind":0,"buff_element":0,"chara_id":4,"style_id":0,"buff_name":"인핸스","ref_status_1":5,"ref_status_2":0,"min_power":50.00,"max_power":65.00,"sp_cost":6,"param_limit":208,"max_lv":10,"skill_attack":0,"only_me":0,"only_first":0},
     {"buff_id":1002,"buff_kind":0,"buff_element":0,"chara_id":10,"style_id":0,"buff_name":"인핸스","ref_status_1":5,"ref_status_2":0,"min_power":50.00,"max_power":65.00,"sp_cost":6,"param_limit":208,"max_lv":10,"skill_attack":0,"only_me":0,"only_first":0},

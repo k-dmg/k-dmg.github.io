@@ -17,14 +17,14 @@
   <link rel="stylesheet" href="resource/damege.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="resource/chara_name_k.js"></script>
-  <script src="resource/chara_style_k.js"></script>
-  <script src="resource/damege.js?v=231106a"></script>
-  <script src="resource/modal.js?v=231106a"></script>
-  <script src="resource/skill_attack_k.js"></script>
-  <script src="resource/skill_buff_k.js"></script>
-  <script src="resource/ability_k.js"></script>
-  <script src="resource/enemy.js"></script>
+  <script src="resource/chara_name_k.js?v=231117a"></script>
+  <script src="resource/chara_style_k.js?v=231117a"></script>
+  <script src="resource/damege.js?v=231117a"></script>
+  <script src="resource/modal.js?v=231117a"></script>
+  <script src="resource/skill_attack_k.js?v=231117a"></script>
+  <script src="resource/skill_buff_k.js?v=231117a"></script>
+  <script src="resource/ability_k.js?v=231117a"></script>
+  <script src="resource/enemy.js?v=231117a"></script>
   <script>
     var chara_no;
     var select_style_list = [0, 0, 0, 0, 0, 0];
@@ -374,6 +374,22 @@
               <td class="type row_element" colspan="2">속성필드</td>
               <td class="row_element"><select id="element_field" class="filed element_field element redisplay"><option selected="" value="">없음</option></select></td>
               <td class="row_element" id="filed_lv"></td>
+            </tr>
+            <tr>
+              <td class="kind" rowspan="3">내성</td>
+              <td class="type" colspan="2">내성 삭제</td>
+              <td><select id="resist_remove" class="filed resist_remove redisplay"><option selected="" value="">없음</option></select></td>
+              <td id="filed_lv"></td>
+            </tr>
+            <tr>
+              <td class="type" colspan="2">내성 감소1</td>
+              <td><select id="resist_down1" class="filed resist_down redisplay"><option selected="" value="">없음</option></select></td>
+              <td><div class="lv"></td>
+            </tr>
+            <tr>
+              <td class="type" colspan="2">내성 감소2</td>
+              <td><select id="resist_down2" class="filed resist_down redisplay"><option selected="" value="">없음</option></select></td>
+              <td><div class="lv"></td>
             </tr>
             <tr>
               <td class="kind">충전</td>

@@ -257,6 +257,33 @@ function setEventTrigger() {
     });
 }
 
+function fixWeak() {
+    let enemy_info = getEnemyInfo();
+    for (let i = 0; i <= 5; i++) {
+        setEnemyElement("#enemy_element_" + i, enemy_info["element_" + i]);
+    }
+    let debuffResist = [0,0,0,0,0,0];
+
+    let weaks = $(".resist_down option:selected").each(function() {
+        let classes = $(this).attr("class")?.split(" ");
+        for (let idx in classes) {
+            let _class = classes[idx];
+            if (_class.startsWith('buff_element-')) {
+                let element_number = Number(_class.replace('buff_element-',''));
+                let effect_size = Number($(this).data("effect_size"));
+                debuffResist[element_number] += effect_size;
+            }
+        }
+
+    });
+    for(let idx in debuffResist) {
+        if (debuffResist[idx] > 0) {
+            setEnemyElement("#enemy_element_" + idx, enemy_info["element_" + idx] + parseInt(debuffResist[idx],10));
+        }
+    }
+    console.log(debuffResist);
+
+}
 // ダメージ計算
 function calcDamage() {
     let skill_info = getAttackInfo();
@@ -265,6 +292,13 @@ function calcDamage() {
     }
     // SP消費計算
     getSpCost();
+    fixWeak();
+    if (isWeak(skill_info, undefined)) {
+        $(".row_weak").css("display", "table-cell");
+    } else {
+        $(".row_weak").css("display", "none");
+    }
+
     // 闘志
     let fightingspirit = $("#fightingspirit").prop("checked") ? -20 : 0;
     // 厄
@@ -444,8 +478,10 @@ function updateBuffEffectSize(option, skill_lv) {
 function isWeak(skill_info, enemy_info) {
     skill_info = skill_info || getAttackInfo();
     enemy_info = enemy_info || getEnemyInfo();
+    let physicalInfo = Number($("#enemy_physical_" + skill_info.attack_physical).val());
+    let elementInfo = Number($("#enemy_element_" + skill_info.attack_element).val());
 
-    return enemy_info["physical_" + skill_info.attack_physical] > 100 || enemy_info["element_" + skill_info.attack_element] > 100;
+    return physicalInfo > 100 || elementInfo > 100;
 }
 
 // 攻撃リストに追加
@@ -494,6 +530,9 @@ function addBuffList(style, chara_no) {
         let only_one = "";
         
         switch (value.buff_kind) {
+            case 20:
+                removeResist(style, value.buff_name, value.min_power, value.buff_element, value.buff_id, true);
+                return;
             case 11: // 属性フィールド
                 addElementField(style, value.buff_name, value.min_power, value.buff_element, value.buff_id, true);
                 return;
@@ -503,6 +542,7 @@ function addBuffList(style, chara_no) {
             case 1: 
                 only_one = "only_one";
             case 4:// 属性 
+            case 21:// 내성깎
                 buff_element = value.buff_element;
             break;
             case 8:
@@ -541,6 +581,21 @@ function addBuffList(style, chara_no) {
         $("." + str_buff).append(option);
     });
 }
+
+// 내성 삭제
+function removeResist(style, field_name, effect_size, field_element, buff_id, limit_border) {
+    let option_text = `${chara_name[style.chara_id]}: ${field_name}`;
+    let option = $('<option>')
+        .text(option_text)
+        .data("effect_size", effect_size)
+        .data("limit_border", limit_border)
+        .val(buff_id)
+        .addClass("public")
+        .addClass(`remove_resist-${field_element}`)
+        .addClass(`chara_id-${style.chara_id}`);
+    $("#resist_remove").append(option);
+}
+
 
 // フィールド追加
 function addElementField(style, field_name, effect_size, field_element, buff_id, limit_border) {
@@ -688,6 +743,7 @@ function getEffectSize(buff_kind, buff_id, chara_no, skill_lv) {
         case 4: // 属性防御力ダウン
         case 5: // 脆弱
         case 19: // DP防御力ダウン
+        case 21: // 내성깎
             effect_size = getDebuffEffectSize(buff_id, chara_no, skill_lv);
         break;
         case 16: // 連撃(小)

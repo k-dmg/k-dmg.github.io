@@ -85,7 +85,7 @@ var style_list = [
     {"style_id":84,"chara_id":5,"style_name":"시크릿 서비스 데몰리쉬","image_url":"KarenSuite_R3.webp","troops":"31A","role":3,"physical":1,"element":4,"jewel_type":1,"ability0":404,"ability1":1101,"ability3":204},
     {"style_id":85,"chara_id":35,"style_name":"향훈의 옷 두른 접아","image_url":"INatsumeButterfly_R3.webp","troops":"31F","role":1,"physical":1,"element":0,"jewel_type":1,"ability0":0,"ability1":1101,"ability3":208},
     {"style_id":86,"chara_id":45,"style_name":"풍요의 신비","image_url":"MKiryuGothic_R3.webp","troops":"30G","role":6,"physical":2,"element":3,"jewel_type":4,"ability0":0,"ability1":1101,"ability3":502},
-    {"style_id":87,"chara_id":31,"style_name":"夜風のChillTime","image_url":"MYanagiPunk_R3.webp","troops":"31F","role":4,"physical":2,"element":0,"jewel_type":2,"ability0":0,"ability1":1101,"ability3":1501},
+    {"style_id":87,"chara_id":31,"style_name":"밤바람의 ChillTime","image_url":"MYanagiPunk_R3.webp","troops":"31F","role":4,"physical":2,"element":0,"jewel_type":2,"ability0":0,"ability1":1101,"ability3":1501},
     {"style_id":88,"chara_id":2,"style_name":"춤추는 리인카네이션","image_url":"YIzumiBeauty_R3.webp","troops":"31A","role":2,"physical":2,"element":4,"jewel_type":1,"ability0":0,"ability1":1101,"ability3":1202},
     {"style_id":89,"chara_id":26,"style_name":"가슴 뛰는 온천 마을","image_url":"NiOhshimaYukata2023_R3.webp","troops":"31E","role":1,"physical":1,"element":4,"jewel_type":1,"ability0":0,"ability1":1101,"ability3":218},
     {"style_id":90,"chara_id":29,"style_name":"목욕 후의 별천지","image_url":"IrOhshimaYukata2023_R3.webp","troops":"31E","role":6,"physical":1,"element":0,"jewel_type":4,"ability0":0,"ability1":1101,"ability3":502},
@@ -93,4 +93,6 @@ var style_list = [
     {"style_id":92,"chara_id":38,"style_name":"달개비꽃의 초대","image_url":"LShanhuaNoble_R3.webp","troops":"31X","role":5,"physical":1,"element":3,"jewel_type":3,"ability0":0,"ability1":1101,"ability3":217},
     {"style_id":93,"chara_id":44,"style_name":"엄폐된 시간","image_url":"MTsukishiroRugged_R3.webp","troops":"30G","role":1,"physical":3,"element":4,"jewel_type":1,"ability0":1503,"ability1":1101,"ability3":204},
     {"style_id":94,"chara_id":47,"style_name":"소망과 동경","image_url":"HOgasawaraNightdress_R3.webp","troops":"30G","role":2,"physical":2,"element":3,"jewel_type":1,"ability0":0,"ability1":1101,"ability3":1004},
+    {"style_id":95,"chara_id":41,"style_name":"찰나의 해후","image_url":"MdAngelisKnights_R3.webp","troops":"31X","role":4,"physical":3,"element":3,"jewel_type":2,"ability0":0,"ability1":1101,"ability3":203},
+    {"style_id":96,"chara_id":42,"style_name":"영원한 마음","image_url":"CSkopovskayaVampire_R3.webp","troops":"31X","role":6,"physical":2,"element":3,"jewel_type":4,"ability0":403,"ability1":1101,"ability3":603},
     ]
