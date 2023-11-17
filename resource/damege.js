@@ -259,10 +259,18 @@ function setEventTrigger() {
 
 function fixWeak() {
     let enemy_info = getEnemyInfo();
+    let debuffResist = [0,0,0,0,0,0];
     for (let i = 0; i <= 5; i++) {
         setEnemyElement("#enemy_element_" + i, enemy_info["element_" + i]);
+        let weakRemove = $("#resist_remove option:selected.remove_resist-"+i);
+        if(weakRemove.val() > 0) {
+            if (enemy_info["element_" + i] < 100) {
+                debuffResist[i] += 100 - enemy_info["element_" + i];
+            }
+        }
+
     }
-    let debuffResist = [0,0,0,0,0,0];
+
 
     let weaks = $(".resist_down option:selected").each(function() {
         let classes = $(this).attr("class")?.split(" ");
@@ -281,7 +289,6 @@ function fixWeak() {
             setEnemyElement("#enemy_element_" + idx, enemy_info["element_" + idx] + parseInt(debuffResist[idx],10));
         }
     }
-    console.log(debuffResist);
 
 }
 // ダメージ計算
