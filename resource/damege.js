@@ -1,4 +1,38 @@
+function loadPreset(no) {
+    if (no < 1 || no > 10) no = 1;
+    const presetData = localStorage.getItem("preset"+no);
+
+    for (let i = 0; i < select_style_list.length; i++) {
+        if (select_style_list[i] !== 0) {
+            chara_no = i;
+            removeMember();
+        }
+    }
+
+    if (presetData) {
+        const charas = presetData.split(",");
+        for(let idx in charas) {
+            chara_no = idx;
+            let this_id = parseInt(charas[idx], 10);
+            if(this_id > 0) {
+                $('.select_style').filter(function() {
+                    const id = $(this).data('style_id');
+                    return id == this_id;
+                }).trigger("click");
+        
+            }
+        }
+    } 
+    $(".presets button").removeClass("selected");
+    $(".presets button:nth-child("+no+")").addClass("selected");
+}
 function setEventTrigger() {
+    $(".presets button").on("click", function(event) {
+        let no = $(this).text();
+        no=Number(no);
+        thisPreset = no;
+        loadPreset(no);
+    });
     // リセットボタン
     $("#style_reset_btn").on("click", function(event) {
         for (let i = 0; i < select_style_list.length; i++) {
@@ -121,9 +155,12 @@ function setEventTrigger() {
         } else {
             let option = $(this).children().eq(selected_index);
             if (isOnlyBuff(option)) {
-                $(this).prop("selectedIndex", 0);
-                alert(option.text() + "は複数設定出来ません");
-                return;
+                if (!confirm("일반적으로 중복 적용하기 힘든 스킬입니다. 그래도 계속 하시겠습니까?")) {
+                    $(this).prop("selectedIndex", 0);
+                    alert(option.text() + "は複数設定出来ません");
+                    return;
+    
+                } 
             }
             let select_lv = option.data("select_lv");
             let skill_info = getBuffIdToBuff(Number(option.val()));
@@ -260,6 +297,9 @@ function setEventTrigger() {
 function fixWeak() {
     let enemy_info = getEnemyInfo();
     let debuffResist = [0,0,0,0,0,0];
+    for (let i = 0; i <= 3; i++) {
+        setEnemyElement("#enemy_physical_" + i, enemy_info["physical_" + i]);
+    }
     for (let i = 0; i <= 5; i++) {
         setEnemyElement("#enemy_element_" + i, enemy_info["element_" + i]);
         let weakRemove = $("#resist_remove option:selected.remove_resist-"+i);
@@ -289,6 +329,16 @@ function fixWeak() {
             setEnemyElement("#enemy_element_" + idx, enemy_info["element_" + idx] + parseInt(debuffResist[idx],10));
         }
     }
+    isInfinity = false;
+    isResist = false;
+    if ($(".row_infinity > select > option[value!='']").length > 0) isInfinity = true;
+    if ($(".row_resist select > option[value!='']").length > 1) isResist = true;
+
+    $(".row_infinity").css("display", "none");
+    if (isInfinity) $(".row_infinity").css("display","table-cell");
+    $(".row_resist").css("display", "none");
+    if (isResist) $(".row_resist").css("display","table-row");
+
 
 }
 // ダメージ計算
@@ -298,13 +348,14 @@ function calcDamage() {
         return;
     }
     // SP消費計算
-    getSpCost();
     fixWeak();
-    if (isWeak(skill_info, undefined)) {
+    let isWeaks = isWeak(skill_info, undefined);
+    if (isWeaks) {
         $(".row_weak").css("display", "table-cell");
     } else {
         $(".row_weak").css("display", "none");
     }
+    getSpCost(isWeaks);
 
     // 闘志
     let fightingspirit = $("#fightingspirit").prop("checked") ? -20 : 0;
@@ -406,7 +457,7 @@ function getEarringEffectSize(type, hit_count) {
 }
 
 // 消費SP計算
-function getSpCost() {
+function getSpCost(weak = false) {
     // SP消費量計算
 	for (let i = 0; i < select_style_list.length; i++) {
         let chara_id = "chara_id-" + select_style_list[i].chara_id;
@@ -419,11 +470,13 @@ function getSpCost() {
 	                addSkillCount(sp_list, attack.attack_name, $(value).parent().attr("id"), attack.sp_cost)
 	                break;
                 default:
-	                let buff_id = Number($(value).val());
-	                if (buff_id !== undefined && buff_id !== 0 ) {
-	                    let buff = getBuffIdToBuff(buff_id)
-	                    addSkillCount(sp_list, buff.buff_name, $(value).parent().attr("id"), buff.sp_cost)
-	                }
+                    if (weak || !$(this).parent().parent().hasClass("row_weak")) {
+                        let buff_id = Number($(value).val());
+                        if (buff_id !== undefined && buff_id !== 0 ) {
+                            let buff = getBuffIdToBuff(buff_id)
+                            addSkillCount(sp_list, buff.buff_name, $(value).parent().attr("id"), buff.sp_cost)
+                        }
+                    }
 	                break;
             }
         });
@@ -548,8 +601,11 @@ function addBuffList(style, chara_no) {
             break;
             case 1: 
                 only_one = "only_one";
-            case 4:// 属性 
+                buff_element = value.buff_element;
+                break;
+            case 20:
             case 21:// 내성깎
+            case 4:// 属性 
                 buff_element = value.buff_element;
             break;
             case 8:
@@ -560,6 +616,10 @@ function addBuffList(style, chara_no) {
             case 16:
             case 17:
                 only_one = "only_one";
+            break;
+            case 23:
+                buff_element = value.buff_element;
+            case 22:
             break;
         }
         
@@ -643,7 +703,7 @@ function addAbility(style_info, chara_no) {
     let ability_list = [style_info.ability0, style_info.ability1, style_info.ability3];
     for (let index = 0; index < ability_list.length; index++) {
         ability_id = ability_list[index];
-        if (ability_id == 0 || ability_id > 1000) {
+        if (ability_id == 0 || (ability_id > 1000 && ability_id < 10000)) {
             // 1000番以降は不要
             continue;
         }
@@ -751,6 +811,8 @@ function getEffectSize(buff_kind, buff_id, chara_no, skill_lv) {
         case 5: // 脆弱
         case 19: // DP防御力ダウン
         case 21: // 내성깎
+        case 22: // 내성깎
+        case 23: // 내성깎
             effect_size = getDebuffEffectSize(buff_id, chara_no, skill_lv);
         break;
         case 16: // 連撃(小)
@@ -977,9 +1039,10 @@ function createEnemyList(enemy_class) {
             $("#enemy_list").append(option);
         }
     });
-    if (enemy_class == 6) {
+    if (enemy_class == 7) {
         // スコアタの場合、いったん自由入力を許可する。
         $(".enemy_type_value").prop("readonly", false);
+        $(".custom").show();
     } else {
         $(".enemy_type_value").prop("readonly", true);
     }
@@ -991,6 +1054,15 @@ function getEnemyInfo() {
     const enemy_class = Number($("#enemy_class option:selected").val());
     const enemy_class_no = Number($("#enemy_list option:selected").val());
     const filtered_enemy = enemy_list.filter((obj) => obj.enemy_class == enemy_class && obj.enemy_class_no === enemy_class_no);
+    if (enemy_class == 7 && filtered_enemy.length > 0) {
+        for (let i = 1; i <= 3; i++) {
+            filtered_enemy[0]["physical_" + i] = Number($("#custom_physical_"+i).val());
+        }
+        for (let i = 0; i <= 5; i++) {
+            filtered_enemy[0]["element_" + i] = Number($("#custom_element_"+i).val());
+        }
+    
+    }
     return filtered_enemy.length > 0 ? filtered_enemy[0] : undefined;
 }
 

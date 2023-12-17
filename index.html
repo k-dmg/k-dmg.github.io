@@ -14,17 +14,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>헤번레 데미지 계산기</title>
   <link rel="stylesheet" href="resource/modal.css">
-  <link rel="stylesheet" href="resource/damege.css">
+  <link rel="stylesheet" href="resource/damege.css?v=231217a">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="resource/chara_name_k.js?v=231117a"></script>
-  <script src="resource/chara_style_k.js?v=231117a"></script>
-  <script src="resource/damege.js?v=231117b"></script>
-  <script src="resource/modal.js?v=231117a"></script>
-  <script src="resource/skill_attack_k.js?v=231117a"></script>
-  <script src="resource/skill_buff_k.js?v=231117a"></script>
-  <script src="resource/ability_k.js?v=231117a"></script>
-  <script src="resource/enemy.js?v=231117c"></script>
+  <script src="resource/chara_name_k.js?v=231217a"></script>
+  <script src="resource/chara_style_k.js?v=231217a"></script>
+  <script src="resource/damege.js?v=231217a"></script>
+  <script src="resource/modal.js?v=231217a"></script>
+  <script src="resource/skill_attack_k.js?v=231217a"></script>
+  <script src="resource/skill_buff_k.js?v=231217a"></script>
+  <script src="resource/ability_k.js?v=231217a"></script>
+  <script src="resource/enemy.js?v=231217a"></script>
   <script>
     var chara_no;
     var select_style_list = [0, 0, 0, 0, 0, 0];
@@ -32,6 +32,9 @@
     var type_physical = ["", "slash", "stab", "strike"];
     var type_element = ["none", "fire", "ice", "thunder", "light", "dark"];
     var select_attack_skill;
+    let thisPreset = 1;
+    let isInfinity = false;
+    let isResist = false;
 
     $(function(){ 
       // 스타일 リスト作成
@@ -56,10 +59,15 @@
       createEnemyList("1");
       // イベント設定
       setEventTrigger();
+      loadPreset(thisPreset);
     });
   </script>
 <style>/* ! tailwindcss v3.3.5 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]{display:none}*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: }.absolute{position:absolute}.right-1{right:0.25rem}.col-span-2{grid-column:span 2 / span 2}.col-span-3{grid-column:span 3 / span 3}.mx-auto{margin-left:auto;margin-right:auto}.mt-2{margin-top:0.5rem}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-16{height:4rem}.h-6{height:1.5rem}.w-12{width:3rem}.w-16{width:4rem}.w-24{width:6rem}.w-28{width:7rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-64{width:16rem}.w-8{width:2rem}.w-96{width:24rem}.w-\[1080px\]{width:1080px}.w-\[332px\]{width:332px}.w-\[400px\]{width:400px}.w-\[410px\]{width:410px}.w-\[480px\]{width:480px}.w-\[482px\]{width:482px}.w-\[610px\]{width:610px}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.grid-cols-7{grid-template-columns:repeat(7, minmax(0, 1fr))}.grid-cols-8{grid-template-columns:repeat(8, minmax(0, 1fr))}.grid-cols-9{grid-template-columns:repeat(9, minmax(0, 1fr))}.justify-center{justify-content:center}.gap-1{gap:0.25rem}.gap-x-0{column-gap:0px}.gap-y-px{row-gap:1px}.pb-1{padding-bottom:0.25rem}.pt-1{padding-top:0.25rem}.text-left{text-align:left}.text-center{text-align:center}.text-right{text-align:right}.leading-10{line-height:2.5rem}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246 / var(--tw-text-opacity))}.underline{-webkit-text-decoration-line:underline;text-decoration-line:underline}
 .modal_layer input.narrow { width: 48px;}
+.row_resist, .row_infinity, .custom { display:none;}
+.presets {text-align: center; margin-bottom: 10px;}
+.presets button { border: 1px solid #b8b8b8; width:40px;}
+.presets button.selected { background-color: #dd8080;}
 </style>
 </head>
 <body>
@@ -70,6 +78,18 @@
   <div>
     <div class="w-[1080px] mx-auto flex">
         <div>
+          <div class="presets">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>10</button>
+          </div>
         <div id="char_list" class="w-[482px] grid grid-cols-7 text-center gap-y-px gap-x-0">
           <div class="mt-2">
             <div>
@@ -174,6 +194,7 @@
               <option value="4">시계탑(H)</option>
               <option value="5">보주의 미궁</option>
               <option value="6">스코어어택</option>
+              <option value="7">커스텀</option>
             </select>
             <select id="enemy_list"></select>
           </div>
@@ -181,11 +202,11 @@
         <br>
         <div class="w-96 mx-auto">
           <div class="grid grid-cols-4 gap-1">
-            <div class="text-right">능력치</div><input type="text" id="enemy_stat" value="" readonly="" class="w-16 text-right">
+            <div class="text-right">능력치</div><input type="text" id="enemy_stat" value="" readonly="" class="w-16 text-right enemy_type_value">
             <div class="col-span-2 flex">
               <div class="text-right w-12">DP</div><input type="text" id="enemy_dp" value="" readonly="" class="w-24 text-right">
             </div>
-            <div class="text-right">파괴율상한</div><input type="text" id="enemy_destruction_limit" value="" readonly="" class="w-16 text-right">
+            <div class="text-right">파괴율상한</div><input type="text" id="enemy_destruction_limit" value="" readonly="" class="w-16 text-right enemy_type_value">
             <div class="col-span-2 flex">
               <div class="text-right w-12">HP</div><input type="text" id="enemy_hp" value="" readonly="" class="w-24 text-right">
             </div>
@@ -198,15 +219,15 @@
           </div>
           <br>
           <div class="grid grid-cols-9">
-            <div class="slash"><input type="image" class="enemy_type_icon" src="resource/slash.png"><input type="text" id="enemy_physical_1" class="enemy_type_value" readonly=""></div>
-            <div class="stab"><input type="image" class="enemy_type_icon" src="resource/stab.png"><input type="text" id="enemy_physical_2" class="enemy_type_value" readonly=""></div>
-            <div class="strike"><input type="image" class="enemy_type_icon" src="resource/strike.png"><input type="text" id="enemy_physical_3" class="enemy_type_value" readonly=""></div>
-            <div class="none"><input type="image" class="enemy_type_icon" src="resource/none.png"><input type="text" id="enemy_element_0" class="enemy_type_value" readonly=""></div>
-            <div class="fire"><input type="image" class="enemy_type_icon" src="resource/fire.png"><input type="text" id="enemy_element_1" class="enemy_type_value" readonly=""></div>
-            <div class="ice"><input type="image" class="enemy_type_icon" src="resource/ice.png"><input type="text" id="enemy_element_2" class="enemy_type_value" readonly=""></div>
-            <div class="thunder"><input type="image" class="enemy_type_icon" src="resource/thunder.png"><input type="text" id="enemy_element_3" class="enemy_type_value" readonly=""></div>
-            <div class="light"><input type="image" class="enemy_type_icon" src="resource/light.png"><input type="text" id="enemy_element_4" class="enemy_type_value" readonly=""></div>
-            <div class="dark"><input type="image" class="enemy_type_icon" src="resource/dark.png"><input type="text" id="enemy_element_5" class="enemy_type_value" readonly=""></div>
+            <div class="slash"><input type="image" class="enemy_type_icon" src="resource/slash.png"><input type="text" id="enemy_physical_1" class="enemy_value" readonly=""><input type="text" id="custom_physical_1" class="custom enemy_type_value" value="100" readonly=""></div>
+            <div class="stab"><input type="image" class="enemy_type_icon" src="resource/stab.png"><input type="text" id="enemy_physical_2" class="enemy_value" readonly=""><input type="text" id="custom_physical_2" class="custom enemy_type_value" value="100" readonly=""></div>
+            <div class="strike"><input type="image" class="enemy_type_icon" src="resource/strike.png"><input type="text" id="enemy_physical_3" class="enemy_value" readonly=""><input type="text" id="custom_physical_3" class="custom enemy_type_value" value="100" readonly=""></div>
+            <div class="none"><input type="image" class="enemy_type_icon" src="resource/none.png"><input type="text" id="enemy_element_0" class="enemy_value" readonly=""><input type="text" id="custom_element_0" class="custom enemy_type_value" value="100" readonly=""></div>
+            <div class="fire"><input type="image" class="enemy_type_icon" src="resource/fire.png"><input type="text" id="enemy_element_1" class="enemy_value" readonly=""><input type="text" id="custom_element_1" class="custom enemy_type_value" value="100" readonly=""></div>
+            <div class="ice"><input type="image" class="enemy_type_icon" src="resource/ice.png"><input type="text" id="enemy_element_2" class="enemy_value" readonly=""><input type="text" id="custom_element_2" class="custom enemy_type_value" value="100" readonly=""></div>
+            <div class="thunder"><input type="image" class="enemy_type_icon" src="resource/thunder.png"><input type="text" id="enemy_element_3" class="enemy_value" readonly=""><input type="text" id="custom_element_3" class="custom enemy_type_value" value="100" readonly=""></div>
+            <div class="light"><input type="image" class="enemy_type_icon" src="resource/light.png"><input type="text" id="enemy_element_4" class="enemy_value" readonly=""><input type="text" id="custom_element_4" class="custom enemy_type_value" value="100" readonly=""></div>
+            <div class="dark"><input type="image" class="enemy_type_icon" src="resource/dark.png"><input type="text" id="enemy_element_5" class="enemy_value" readonly=""><input type="text" id="custom_element_5" class="custom enemy_type_value" value="100" readonly=""></div>
           </div>
         </div>
         <br>
@@ -288,7 +309,7 @@
               <td><select id="funnel2" class="funnel redisplay include_lv"><option selected="" value="">없음</option></select></td>
               <td><div class="lv"><select id="funnel2_lv"></select></div></td>
             </tr>            <tr>
-              <td rowspan="8" class="kind">디버프</td>
+              <td rowspan="12" class="kind">디버프</td>
               <td class="type" colspan="2">방어력DOWN1</td>
               <td><select id="defense_down1" class="debuff redisplay defense_down include_lv"><option selected="" value="">없음</option></select></td>
               <td><div class="lv"><select id="defense_down1_lv" class="lv_effect"></select></div></td>
@@ -327,6 +348,26 @@
               <td class="type row_weak" colspan="2">쇠약2</td>
               <td class="row_weak"><select id="fragile2" class="fragile redisplay include_lv"><option selected="" value="">없음</option></select></td>
               <td class="row_weak"><div class="lv"><select id="fragile2_lv" class="lv_effect"></select></div></td>
+            </tr>
+            <tr>
+              <td class="type row_infinity" colspan="2">영구 방어력1</td>
+              <td class="row_infinity"><select id="defense_idown1" class="debuff redisplay defense_idown include_lv"><option selected="" value="">없음</option></select></td>
+              <td class="row_infinity"><div class="lv"><select id="defense_idown1_lv" class="lv_effect"></select></div></td>
+            </tr>            
+            <tr>
+              <td class="type row_infinity" colspan="2">영구 방어력2</td>
+              <td class="row_infinity"><select id="defense_idown2" class="debuff redisplay defense_idown include_lv"><option selected="" value="">없음</option></select></td>
+              <td class="row_infinity"><div class="lv"><select id="defense_idown2_lv" class="lv_effect"></select></div></td>
+            </tr>
+            <tr>
+              <td class="type row_element row_infinity" colspan="2">영구 속성방어력1</td>
+              <td class="row_infinity row_element"><select id="element_idown1" class="debuff redisplay element_idown include_lv"><option selected="" value="">없음</option></select></td>
+              <td class="row_infinity row_element"><div class="lv"><select id="element_idown1_lv" class="lv_effect"></select></div></td>
+            </tr>
+            <tr>
+              <td class="type row_element row_infinity" colspan="2">영구 속성방어력2</td>
+              <td class="row_infinity row_element"><select id="element_idown2" class="debuff redisplay element_idown include_lv"><option selected="" value="">없음</option></select></td>
+              <td class="row_infinity row_element"><div class="lv"><select id="element_idown2_lv" class="lv_effect"></select></div></td>
             </tr>
             <tr>
               <td rowspan="8" class="kind">크리티컬</td>
@@ -375,18 +416,18 @@
               <td class="row_element"><select id="element_field" class="filed element_field element redisplay"><option selected="" value="">없음</option></select></td>
               <td class="row_element" id="filed_lv"></td>
             </tr>
-            <tr>
+            <tr class="row_resist">
               <td class="kind" rowspan="3">내성</td>
               <td class="type" colspan="2">내성 삭제</td>
               <td><select id="resist_remove" class="filed resist_remove redisplay"><option selected="" value="">없음</option></select></td>
               <td id="filed_lv"></td>
             </tr>
-            <tr>
+            <tr class="row_resist">
               <td class="type" colspan="2">내성 감소1</td>
               <td><select id="resist_down1" class="filed resist_down redisplay"><option selected="" value="">없음</option></select></td>
               <td><div class="lv"></td>
             </tr>
-            <tr>
+            <tr class="row_resist">
               <td class="type" colspan="2">내성 감소2</td>
               <td><select id="resist_down2" class="filed resist_down redisplay"><option selected="" value="">없음</option></select></td>
               <td><div class="lv"></td>

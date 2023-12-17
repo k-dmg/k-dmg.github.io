@@ -82,9 +82,11 @@ div.lv {
 div.lv::before {
     content: "Lv";
     margin-right: 0px;
+    font-size:12px;
 }
 div.lv select{
     text-align: center;
+    font-size:12px;
 }
 
 input.calc_btn {
@@ -125,6 +127,12 @@ input.calc_btn {
     margin-bottom: -8px;
 }
 .enemy_type_value {
+    text-align: center;
+    width: 32px;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: 5px;
+}
+.enemy_value {
     text-align: center;
     width: 32px;
     background-color: rgba(0, 0, 0, 0);

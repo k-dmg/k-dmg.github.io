@@ -108,7 +108,7 @@ function addModalEvent() {
         for(let idx in select_style_list) {
             lastSelect.push(select_style_list[idx].style_id)
         }
-        localStorage.setItem("lastSelect", lastSelect.join(","));
+        localStorage.setItem("preset"+thisPreset, lastSelect.join(","));
         closeModel();
     });
 
