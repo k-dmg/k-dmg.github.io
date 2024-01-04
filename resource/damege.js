@@ -1208,7 +1208,7 @@ function getBuffEffectSize(buff_id, chara_no, skill_lv) {
     } else {
         effect_size += (max_power - min_power) / skill_stat * status + min_power;
     }
-    if (skill_info.buff_kind == 2) {
+    if (skill_info.buff_kind == 2 || skill_info.buff_kind == 6) {
         // 心眼はここまで
         return effect_size;
     }

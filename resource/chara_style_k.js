@@ -99,4 +99,8 @@ var style_list = [
     {"style_id":98,"chara_id":23,"style_name":"Holiday Star Night","image_url":"ADateXmas2023_R3.webp","troops":"31D","role":2,"physical":3,"element":2,"jewel_type":1,"ability0":402,"ability1":1101,"ability3":202},
     {"style_id":99,"chara_id":3,"style_name":"트와일라이트 그로스","image_url":"MAikawaSuite_R3.webp","troops":"31A","role":6,"physical":3,"element":5,"jewel_type":4,"ability0":405,"ability1":1101,"ability3":10001},
     {"style_id":100,"chara_id":6,"style_name":"트와일라이트 메모리즈","image_url":"TKunimiSuite_R3.webp","troops":"31A","role":4,"physical":1,"element":0,"jewel_type":3,"ability0":406,"ability1":1101,"ability3":1004},
+    {"style_id":101,"chara_id":7,"style_name":"반짝반짝 궁극의 아이돌","image_url":"EAoiNewYear2024_R3.webp","troops":"31B","role":7,"physical":3,"element":1,"jewel_type":6,"ability0":0,"ability1":1101,"ability3":1103},
+    {"style_id":102,"chara_id":8,"style_name":"너의 눈동자에 죽음을","image_url":"IMinaseNewYear2024_R3.webp","troops":"31B","role":1,"physical":2,"element":1,"jewel_type":1,"ability0":411,"ability1":1101,"ability3":201},
+    {"style_id":103,"chara_id":28,"style_name":"꾸벅꾸벅 파자마 나이트","image_url":"YoOhshimaSheep_R3.webp","troops":"31E","role":5,"physical":2,"element":4,"jewel_type":3,"ability0":0,"ability1":1101,"ability3":234},
+    {"style_id":104,"chara_id":30,"style_name":"이른 봄의 맞바람","image_url":"MuOhshimaFurisode2024_R3.webp","troops":"31E","role":6,"physical":2,"element":0,"jewel_type":2,"ability0":0,"ability1":1101,"ability3":1106},
     ]
