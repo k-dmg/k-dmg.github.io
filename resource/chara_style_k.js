@@ -103,4 +103,8 @@ var style_list = [
     {"style_id":102,"chara_id":8,"style_name":"너의 눈동자에 죽음을","image_url":"IMinaseNewYear2024_R3.webp","troops":"31B","role":1,"physical":2,"element":1,"jewel_type":1,"ability0":411,"ability1":1101,"ability3":201},
     {"style_id":103,"chara_id":28,"style_name":"꾸벅꾸벅 파자마 나이트","image_url":"YoOhshimaSheep_R3.webp","troops":"31E","role":5,"physical":2,"element":4,"jewel_type":3,"ability0":0,"ability1":1101,"ability3":234},
     {"style_id":104,"chara_id":30,"style_name":"이른 봄의 맞바람","image_url":"MuOhshimaFurisode2024_R3.webp","troops":"31E","role":6,"physical":2,"element":0,"jewel_type":2,"ability0":0,"ability1":1101,"ability3":1106},
+    {"style_id":105,"chara_id":51,"style_name":"Faraway Eden","image_url":"AliceCDefault_R3.webp","troops":"AB","role":7,"physical":3,"element":2,"jewel_type":6,"ability0":0,"ability1":1101,"ability3":0},
+    {"style_id":106,"chara_id":50,"style_name":"하늘을 나는 검","image_url":"AliceAOnePiece_R3.webp","troops":"AB","role":1,"physical":1,"element":2,"jewel_type":1,"ability0":402,"ability1":1101,"ability3":0},
+    {"style_id":107,"chara_id":49,"style_name":"흔한 비일상","image_url":"AliceBBlazerUniform_R3.webp","troops":"AB","role":2,"physical":2,"element":2,"jewel_type":1,"ability0":0,"ability1":1101,"ability3":202},
+    {"style_id":108,"chara_id":52,"style_name":"Finally found our silver lining","image_url":"BiancaADefault_R2.webp","troops":"AB","role":6,"physical":3,"element":2,"jewel_type":4,"ability0":0,"ability1":0,"ability3":0},
     ]
