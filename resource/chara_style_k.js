@@ -109,4 +109,5 @@ var style_list = [
     {"style_id":108,"chara_id":52,"style_name":"Finally found our silver lining","image_url":"BiancaADefault_R2.webp","troops":"AB","role":6,"physical":3,"element":2,"jewel_type":4,"ability0":0,"ability1":0,"ability3":0},
     {"style_id":109,"chara_id":2,"style_name":"너를 기다리는 홍옥","image_url":"YIzumiSnowWhite_R3.webp","troops":"31A","role":2,"physical":2,"element":5,"jewel_type":1,"ability0":503,"ability1":1101,"ability3":504},
     {"style_id":110,"chara_id":13,"style_name":"Daydream Believer","image_url":"BIYamawakiDaydream_R3.webp","troops":"31C","role":1,"physical":1,"element":3,"jewel_type":1,"ability0":7,"ability1":1101,"ability3":1004},
+    {"style_id":111,"chara_id":1,"style_name":"The Feel of the Throne","image_url":"RKayamoriCombat2023_R3.webp","troops":"31A","role":1,"physical":1,"element":1,"jewel_type":1,"ability0":505,"ability1":1101,"ability3":235},
     ]
