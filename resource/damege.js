@@ -110,19 +110,19 @@ function setEventTrigger() {
         } else {
             let option = $(this).children().eq(selected_index);
             if (isOnlyBuff(option)) {
-                if (!confirm(option.text() + "は\r\n通常、複数付与出来ませんが、設定してよろしいですか？")) {
+                if (!confirm(option.text() + " 스킬은\r\n일반적으로 여러개 적용되지 않습니다만 설정하시겠습니까?")) {
                     $(this).prop("selectedIndex", 0);
                     return;
                 }
             }
             if (isOnlyUse(option)) {
-                if (!confirm(option.text() + "は\r\n通常、他スキルに設定出来ませんが、設定してよろしいですか？")) {
+                if (!confirm(option.text() + " 스킬은\r\n일반적으로 다른 스킬 설정이 불가능합니만 설정하시겠습니까?")) {
                     $(this).prop("selectedIndex", 0);
                     return;
                 }
             }
             if (isOtherOnlyUse($(option))) {
-                if (!confirm(option.text() + "は\r\n通常、自分に設定出来ませんが、設定してよろしいですか？")) {
+                if (!confirm(option.text() + " 스킬은\r\n일반적으로 자신에게 설정할 수 없습니다만 설정하시겠습니까?")) {
                     $(this).prop("selectedIndex", 0);
                     return;
                 }
