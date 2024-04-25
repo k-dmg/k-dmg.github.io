@@ -1799,6 +1799,9 @@ function getBuffEffectSize(buff_id, member_info, skill_lv, target_jewel_type) {
     if (ability_id == 501 && member_info.limit_count >= 3) {
         effect_size *= 1.25;
     }
+    if (ability_id == 508 && member_info.limit_count >= 3) {
+        effect_size *= 1.30;
+    }
     return effect_size;
 }
 

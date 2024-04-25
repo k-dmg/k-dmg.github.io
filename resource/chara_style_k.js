@@ -115,4 +115,6 @@ var style_list = [
     {"style_id":114,"chara_id":11,"style_name":"홉, 스텝, 슬립!","image_url":"KHiiragiWaitress_R3.webp","troops":"31B","role":5,"physical":1,"element":0,"jewel_type":5,"ability0":0,"ability1":1101,"ability3":0},
     {"style_id":115,"chara_id":4,"style_name":"버니 파이트 데비에이션","image_url":"TTojoRabbit_R3.webp","troops":"31A","role":7,"physical":2,"element":5,"jewel_type":4,"ability0":405,"ability1":1101,"ability3":501},
     {"style_id":116,"chara_id":38,"style_name":"춘야 워 아이 니","image_url":"LShanhuaSuspicious_R3.webp","troops":"31X","role":7,"physical":1,"element":0,"jewel_type":4,"ability0":506,"ability1":1101,"ability3":502},
+    {"style_id":117,"chara_id":45,"style_name":"어렴풋한 하룻밤의 몽화","image_url":"MKiryuCerulean_R3.webp","troops":"30G","role":7,"physical":2,"element":2,"jewel_type":4,"ability0":507,"ability1":1101,"ability3":0},
+    {"style_id":118,"chara_id":46,"style_name":"로리타 스토익","image_url":"CSugaharaExcellency_R3.webp","troops":"30G","role":5,"physical":3,"element":2,"jewel_type":1,"ability0":1107,"ability1":1101,"ability3":508},
     ]
