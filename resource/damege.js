@@ -544,6 +544,10 @@ function calcDamage() {
     let element_field = getSumEffectSize("element_field") / 100 + 1;
     let weak_physical = $("#enemy_physical_" + skill_info.attack_physical).val() / 100;
     let weak_element = $("#enemy_element_" + skill_info.attack_element).val() / 100;
+    if (skill_info?.penetrate > 0) {
+        weak_physical = skill_info.penetrate + 1;
+        weak_element = 1;
+    }
     let enemy_defence_rate = 1 - grade_sum.defense_rate / 100;
     let funnel_sum = 1 + getSumFunnelEffectList().reduce((accumulator, currentValue) => accumulator + currentValue, 0) / 100;
     let destruction_rate = Number($("#enemy_destruction_rate").val());
@@ -797,6 +801,10 @@ function isWeak() {
     skill_info = getAttackInfo();
     if (skill_info === undefined) {
         return false
+    }
+    //관통 처리
+    if (skill_info?.penetrate > 0) {
+        return true;
     }
     let physical_resist = Number($("#enemy_physical_" + skill_info.attack_physical).val());
     let element_resist = Number($("#enemy_element_" + skill_info.attack_element).val());
