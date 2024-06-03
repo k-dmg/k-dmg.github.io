@@ -789,7 +789,9 @@ function updateBuffEffectSize(option, skill_lv) {
     let chara_id = member_info.style_info.chara_id;
     let chara_name = getCharaData(chara_id).chara_short_name;
     let strengthen = option.parent().parent().parent().find("input").prop("checked") ? 1.2 : 1;
-    let text_effect_size = effect_size * strengthen;
+    let ability_streng = getStrengthen(member_info, skill_buff);
+    let text_effect_size = effect_size * (strengthen + ability_streng);
+    effect_size = effect_size * (1 + ability_streng );
     let effect_text = `${chara_name}: ${skill_buff.buff_name} ${Math.floor(text_effect_size * 100) / 100}%`;
     option.text(effect_text).data("effect_size", effect_size).data("select_lv", skill_lv);
     // 耐性が変更された場合
@@ -797,7 +799,19 @@ function updateBuffEffectSize(option, skill_lv) {
         updateEnemyResist();
     }
 }
+function getStrengthen(member_info, skill_buff) {
+    let strengthen = 0;
+    let defense_down = [3, 4, 19, 20, 21, 22];
+    if (defense_down.includes(skill_buff.buff_kind)) {
+        let ability_id3 = member_info.style_info.ability3;
+        // モロイウオ(あいな専用)
+        if (ability_id3 == 509 && member_info.limit_count >= 3 && skill_buff.sp_cost <= 8) {
+            strengthen += 0.3;
+        }
+    }
+    return strengthen;
 
+}
 // 弱点判定
 function isWeak() {
     skill_info = getAttackInfo();
